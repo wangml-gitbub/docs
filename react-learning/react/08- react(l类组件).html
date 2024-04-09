@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React</title>
+</head>
+<body>
+  <div id="test"></div>
+  <!-- React 核心库 -->
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <!-- 用来 React 操作 DOM -->
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <!-- 用于 jsx转js -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  
+  <!-- 必须写 type="text/babel" -->
+  <script type="text/babel">
+   // 创建类组件
+   //必须继承React.Component
+    //然后重写Render()方法，该方法一定要有返回值，返回一个虚拟DOM
+   class Welcome extends React.Component {
+
+    render() {// render 放在哪里---Welcome的原型对象上，供实例使用
+      // this指的是Welcome的实例对象，即：Welcome组件实例对象
+      return <div>这是一个函数式组件,name 值为： {this.props.name}</div>
+    }
+   }
+   // 渲染组件到页面
+   ReactDOM.render(<Welcome name="bob" />, document.getElementById('test'))
+
+   /*
+   执行 ReactDOM.render(<Welcome name="bob" />, document.getElementById('test')) 发生了什么？
+
+   React 解析组件标签，找到了 Welcome 组件
+   发现组件时使用类定义的，随后 new 出来该组件的实例，并通过该实例调用原型上的 render 方法
+   将 render 方法返回的虚拟 DOM 转为真实 DOM，最后呈现在页面上
+   */
+  </script>
+</body>
+</html>

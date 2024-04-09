@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React</title>
+</head>
+<body>
+  <div id="test"></div>
+  <!-- React 核心库 -->
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <!-- 用来 React 操作 DOM -->
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <!-- 用于 jsx转js -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  
+  <!-- 必须写 type="text/babel" -->
+  <script type="text/babel">
+   // 创建函数式组件
+   function Welcome(props) {
+    return <div>这是一个函数式组件,name 值为： {props.name}</div>
+   }
+   // 渲染组件到页面
+   ReactDOM.render(<Welcome name="bob" />, document.getElementById('test'))
+
+  //  执行 ReactDOM.render(<Welcome/>, document.getElementById('test'))发生了什么：
+   //  React 解析组件标签，找到组件 Welcome
+   // 发现组件时函数定义的，传入 name="bob" 属性
+   // 最后调用函数，将返回的虚拟 DOM 转为 真实DOM，最后呈现在页面上
+  </script>
+</body>
+</html>
